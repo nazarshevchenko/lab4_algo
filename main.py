@@ -1,5 +1,8 @@
 
-file = open("cases/case3", "r").read()
+import time
+
+
+file = open("cases/case1", "r").read()
 file = file.split()
 
 X = file[0]
@@ -14,14 +17,17 @@ X_bin = bin(X_int)
 powers = [1]
 power = 1
 newPower = 1
-while True:
-    newPower *= N
-    if newPower > X_int:
-        break
+if N > 1:
+    while True:
+        newPower *= N
+        if newPower > X_int:
+            break
 
-    powers.append(newPower)
-    power += 1
+        powers.append(newPower)
+        power += 1
 
+
+start_time = time.time()
 
 result = 0
 X_list = list(X)
@@ -40,3 +46,5 @@ for power in powers[::-1]:
     result += count
 
 file = open("out", "w").write(str(result))
+
+print("--- %s seconds ---" % (time.time() - start_time))
